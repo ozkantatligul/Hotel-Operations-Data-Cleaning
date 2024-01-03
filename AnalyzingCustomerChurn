@@ -1,0 +1,193 @@
+1-) Firstly, I loaded the .csv file into the Power BI program.
+
+2-) Then, I created two measures to find the number of customers and unique customers.
+
+    -Number Of Customers = COUNT('Databel - Data'[Customer ID])
+
+    -Number Of Unique Customers = DISTINCTCOUNT('Databel - Data'[Customer ID])
+
+3-) After that, I created two "Card" visuals to check if the numbers match or not. As a result, 
+    both matched, indicating no repeated customers.
+
+4-) Now, I need to calculate the "Churn Rate." However, the "Churn Label" has "Yes" and "No" responses. 
+    I converted this column into a binomial column by writing the following DAX code:
+
+    -Churned = IF('Databel - Data'[Churn Label] = "Yes", 1, 0)
+
+5-) Here, I needed to find the number of churned customers. Using DAX again, I wrote the following code:
+
+    -Number of Churned Customers = COUNTX(FILTER('Databel - Data', 'Databel - Data'[Churned] = 1), 1)
+
+     By creating a measure and using the filter and countx functions, I aimed to count only the 
+     customers with a value of "1."
+
+6-) To calculate the Churn Rate, I divided the number of churned customers by the total number of 
+    customers using the DIVIDE function. Since I wanted a percentage result, I changed the format to Percentage. 
+    However, to achieve the Churn Rate, I created a new measure with the following DAX code:
+
+    -Churn Rate = DIVIDE([Number of Churned Customers], [Number Of Customers])
+
+    ***Based on this, I reached a 26.87% Churn Rate. Now, we need to find out why customers are leaving the service.***
+
+7-) To precisely identify the reasons for customer churn, I used a "Bar Chart." For the Bar Chart, 
+    I utilized "Number Of Customers" and "Churn Reason" columns, updating the chart in 
+    descending order to see the major reasons for churn.
+
+8-) Setting the "Number Of Customers" column to "Percent Of Grand Total" in the chart settings, 
+    I aimed to display it as a percentage above the chart. 
+
+    ***According to the results, if I rank the reasons for customer churn, the top three are:
+    1st: "Competitor Made Better Offer," 4.53%
+    2nd: "Competitor Had Better Devices," 4.44%
+    3rd: "Attitude of Support Person," 3.04%
+    ***
+
+9-) "Churn Reasons" and "Churn Category" are grouped. Each value in "Churn Reasons" corresponds to a 
+    group in "Churn Category." To view the "Churn Category," I created a table. The categories I observed were:
+
+    +Attitude
+    +Competitor
+    +Dissatisfaction
+    +Other
+    +Price
+
+    Then, I created a pie chart for "Churn Category" with customers labeled as "Churn."
+
+    ***Based on the results, the "Competitor" category stands out with a rate of 44.82%.***
+
+10-) After that, I added a "Map" to find the "Churn Rate" by state. Using "Bubble size" for the Churn Rate
+     and ToolTips for "Number Of Customer" and "Churn Rate," I employed the "State" column as the location. 
+     Coloring it accordingly, I aimed to visualize the states with the highest "Churn Rate" in red.
+
+     ***According to the results, California has the highest "Churn Rate" at 63.24%.***
+
+     ----****----
+
+     Up to this point, our visualizations have provided some insights. Three key findings are:
+     1-) Our overall Churn Rate is 26.87%.
+     2-) Customers leave the service most frequently due to "Competitors" (44.87%).
+     3-) California has the highest Churn Rate at 63.24%.
+
+     ----****----
+
+11-) Wanting to conduct a demographic analysis, I created a new column to 
+     categorize customers as "Senior," "Under 30," or "Other." I achieved this by utilizing existing 
+     columns and writing a DAX formula:
+
+     -Demographics = IF('Databel - Data'[Senior]="Yes","Senior",If('Databel - Data'[Under 30]="Yes","Under 30","Other"))
+
+      ***According to the results, the "Churn Rate" for "Senior" is 38.46%, ranking the highest.***
+
+12-) Going deeper into the analysis, I created age brackets to examine if there is a correlation 
+      between age and the "Churn Rate." Grouping ages into intervals from 18 to 85, I used a Line and 
+      Stacked Column Chart to discover the following:
+
+      *** 
+          1-) In general, the churn rate has an increasing trend through the age brackets.
+          2-) The Churn rate for customers aged more than 80 is exactly 52%.
+          3-) As the age increases, the average churn rate for age brackets also increases.
+      ***
+
+13-) Now, I want to investigate if the monthly charge affects the Churn Rate. Formatting "Monthly Charge" as currency, 
+     I created a Bar Chart using "Monthly Charge" and "Number Of Customers in Group" and added a Line and 
+     Stack Column Chart with the "Churn Rate."
+
+     ***Here I noticed that customers with lower phone bills have a lower rate of leaving the service compared to those with higher bills.***
+
+14-) Moving on to contract analysis, I categorized "Contract Type" as "Yearly" to compare customers with monthly and yearly contracts. 
+     Creating a new column with DAX:
+
+     -Contract Category = SWITCH('Databel - Data'[Contract Type], "One Year", "Yearly", "Two Year", "Yearly", "Monthly")
+
+15-) Using the new "Contract Category," I visualized the "Churn Rate" with a Multi Row Card. 
+     The results showed that customers with monthly contracts have a 46.29% Churn Rate, 
+     while yearly contract users have a 6.62% Churn Rate.
+
+
+16-) I wanted to approach the "Churn Rate" by gender. For this reason, I used a clustered column chart 
+     with "Gender," "Churn Rate," and "Contract Category." Here, I noticed that in the monthly category, 
+     the rate of customers leaving the service was highest among females, with a rate of 47.31%.
+
+17-) Afterward, I wanted to investigate the churn rate of customers with an "Unlimited plan." 
+     I created a table and observed that customers with an unlimited plan had a higher churn rate compared to those without.
+
+18-) To deepen the analysis, I decided to categorize customers based on their monthly internet usage: 
+     less than 5GB, between 5 and 10GB, and 10GB or more. I created a new column using the following DAX formula:
+
+     -Grouped Consumption = IF('Databel - Data'[Avg Monthly GB Download]<5,"Less than 5 GB", 
+     IF('Databel - Data'[Avg Monthly GB Download]<10,"Between 5 and 10 GB","10 or more GB"))
+
+19-) Then, I displayed the churn rate for customers with an Unlimited Plan using a clustered bar chart with the newly created column.
+ 
+      ***I noticed that customers using less than 5GB monthly with an unlimited plan had the highest churn rate at 34.71%. 
+      There was a significant difference compared to customers using less than 5GB without an unlimited plan.***
+
+20-) Now, approaching from a different angle, I wanted to look at the "Churn Rate" of customers making international calls. 
+     I created a matrix with "International Callers," "International Plan Holders," and "Churn Rate," 
+     followed by a map visualization with the Churn Rate.
+
+      ***     
+         An important finding emerged here: In California, the state with the highest churn rate, 
+         customers with an international plan but not making international calls had a 72% churn rate.
+      ***
+ 
+!!!!!
+
+ AFTER THIS, TO MITIGATE THIS ISSUE, THE COMPANY COULD CONTACT CUSTOMERS WITH INTERNATIONAL PLANS BUT NOT USING INTERNATIONAL CALLS. BY IDENTIFYING THEIR LACK OF USAGE, THE COMPANY COULD OFFER THEM A CHEAPER, LOWER-TIER CALL PACKAGE.
+
+ !!!!!
+
+21-) After reaching this significant insight, I found that complaints in customer service are increasing. 
+     To investigate this, I need to analyze "payment method," "contract type," and how long customers have been members.
+      When comparing "Account Length" and "Churn Rate" using a line chart, 
+
+     ***I observed that as the duration of customer service usage increased, the churn rates decreased.*** 
+
+     By adding a pie chart, I also saw the payment methods used by customers, with a low percentage (5%) using "Paper Check."
+
+22-) Now, with the visualizations created earlier, we need to build an interactive dashboard.
+
+      First, I visualized the reasons why customers stop using our service, the state with the 
+      highest customer churn rate, and the types of contracts used by these customers.
+
+      Second, I used a visualization to show the ages of customers and how long they have been continuing to use our service.
+
+      Third, it's necessary to examine customer service calls. For this, I analyzed the service 
+      call column using an Average and created a scatter plot table with payment method, contract type, and churn rate.
+
+      Fourth, I wanted to calculate the Average Extra International Charges and Extra Data Charges. 
+      For this, I created two new measures:
+
+      -Avg Extra Data Charges = SUM('Databel - Data'[Extra Data Charges])/[Number of Customers]
+
+      -Avg Extra International Charges = SUM('Databel - Data'[Extra International Charges])/[Number of Customers]
+
+      Then, on this page, I created an interactive table by incorporating visuals for customers with unlimited plans and grouped data usage.
+
+      Fifth and finally, using the previously created tables, I built a dashboard that can be examined by state.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
