@@ -1,1 +1,0 @@
-Import Data,Data Modeling,Measure Creation,Visualization Creation, Database Relationship, Dynamic Filtering, Conditional Column, Reporting and Analysis, Color and Theme Settings, Navigation Bar
