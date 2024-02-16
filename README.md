@@ -10,10 +10,12 @@
     <li>Power BI</li>
     <ul style="list-style-type◾">
       <li><a href="#powerbi1">Analyzing Customer Churn</a></li>
+     <li><a href="https://github.com/ozkantatligul/Portfolio-Projects#powerbi2">HR Analytics</a></li>
     </ul>
+        <li>Python</li>
     <ul style="list-style-type◾">
-    <li><a href="https://github.com/ozkantatligul/Portfolio-Projects#powerbi2">HR Analytics</a></li>
-  </ul>
+      <li><a href="#">Sentiment Analysis (unfinished)</a></li>
+    </ul>
   </ul>
   </li>
   <hr/>
