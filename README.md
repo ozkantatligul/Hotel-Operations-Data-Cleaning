@@ -11,6 +11,9 @@
     <ul style="list-style-type◾">
       <li><a href="#powerbi1">Analyzing Customer Churn</a></li>
     </ul>
+    <ul style="list-style-type◾">
+    <li><a href="https://github.com/ozkantatligul/Portfolio-Projects#powerbi2">HR Analytics</a></li>
+  </ul>
   </ul>
   </li>
   <hr/>
@@ -52,4 +55,21 @@ PostgreSQL <br/>
 <img width="628" alt="5" src="https://github.com/ozkantatligul/ozkantatligul/assets/155071370/391ad47e-fd16-4f51-b493-672056a1fa45">
 <img width="753" alt="6" src="https://github.com/ozkantatligul/ozkantatligul/assets/155071370/cc3be619-de92-4bb6-83aa-8ff3e65384f2">
 <img width="750" alt="7" src="https://github.com/ozkantatligul/ozkantatligul/assets/155071370/d2e7fbff-dc36-4c6b-9f37-2d074952f352">
+<h4 align="left" id="powerbi2">HR Analytics</h4>
+<h5 align="left">Code: <a href="https://github.com/ozkantatligul/Portfolio-Projects/blob/main/HR%20Analytics">HR Analytics</a></h5>
+<h5 align="left">Description</h5>
+<p>In this Power BI case study, we delve into a comprehensive dataset from Atlas Labs, a fictional software company, focusing on Human Resources data analysis and visualization. Throughout this project, we aim to leverage the capabilities of Power BI to import, explore, and visualize HR data effectively.
 
+Beginning with the basics and building upon our existing knowledge of the platform, we embark on a journey of exploratory data analysis, employing DAX to craft insightful visualizations. Our objective is to unravel the intricacies of employee attrition and identify key factors influencing it.
+
+By delving deeper into attrition trends, we aim to equip the organization with actionable insights to enhance employee retention strategies. This analysis serves as a cornerstone in guiding decision-making processes aimed at fostering a more conducive work environment.
+
+In the final stages of the case study, we shift focus towards refining the presentation of our findings. Implementing design changes, we aim to craft a visually appealing and branded report that effectively communicates our analysis and recommendations.</p>
+<h5 align="left">Skills</h5>
+<p>Import Data,Data Modeling,Measure Creation,Visualization Creation, Database Relationship, Dynamic Filtering, Conditional Column, Reporting and Analysis, Color and Theme Settings, Navigation Bar</p>
+<h5 align="left">Technology</h5>
+<p>Power BI</p>
+<img width="1030" alt="Ekran_goruntusu_2024-01-27_153904" src="https://github.com/ozkantatligul/Portfolio-Projects/assets/155071370/5862e4da-c641-4a3c-ae4a-9f0aa214ef41">
+<img width="782" alt="Ekran_goruntusu_2024-01-27_162731" src="https://github.com/ozkantatligul/Portfolio-Projects/assets/155071370/4f60e7ba-3d17-40dc-9614-9643e75a4b46">
+<img width="655" alt="Ekran_goruntusu_2024-01-28_141006" src="https://github.com/ozkantatligul/Portfolio-Projects/assets/155071370/44104b39-5ccc-478a-803d-4b93835f45ad">
+<img width="1002" alt="Ekran_goruntusu_2024-01-29_201705" src="https://github.com/ozkantatligul/Portfolio-Projects/assets/155071370/684c0bd6-6bcb-4ce8-b0f9-0494836f0c9a">
